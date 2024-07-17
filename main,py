@@ -1,0 +1,38 @@
+ from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route("/")
+def main():
+    return "<h1>Hello World</h1>"
+
+@app.route("/computing")
+@app.route("/suffering")
+def computing():
+    return "<h1>Codegramming</h1>"
+
+@app.route("/iforgottodomyhomework")
+def hw():
+    return "<h6>same</h6>"
+
+info = {
+    "name": "John Beef",
+    "age": "178",
+    "school": "University of Lamar"
+    "alive": "alive"
+    "bounty": "$22.21"
+}
+
+@app.route("/secret")
+def secret():
+    return render_template("secret.html", info)
+
+college = "ASR"
+rival = "SA"
+
+@app.route("/aboutme")
+def aboutme():
+    return render_template("about.html", mycollege=college, myrival=rival)
+
+if __name__ == "__main__":
+    app.run(debug=True)
